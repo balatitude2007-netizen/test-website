@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary-navy text-text-primary font-sans antialiased selection:bg-primary-blue/30 selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold text-white tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-primary;
+  }
+  
+  .glass-panel {
+    @apply bg-primary-dark/50 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+
+  .glass-panel-hover {
+    @apply hover:bg-primary-dark/80 hover:border-white/10 transition-all duration-300;
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  }
+
+  .aurora-bg {
+    background-image: 
+      radial-gradient(ellipse at 100% 0%, rgba(121, 40, 202, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(0, 112, 243, 0.15) 0%, transparent 50%);
+  }
+}

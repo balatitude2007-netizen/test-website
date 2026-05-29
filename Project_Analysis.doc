@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Analysis - PROGLAN IT Services</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        h1, h2, h3 { color: #111; border-bottom: 1px solid #eaeaea; padding-bottom: 0.3em; }
+        h1 { border-bottom: 2px solid #eaeaea; }
+        pre { background-color: #f6f8fa; padding: 16px; border-radius: 6px; overflow: auto; font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace; font-size: 85%; }
+        code { background-color: rgba(27,31,35,0.05); padding: 0.2em 0.4em; border-radius: 3px; font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace; font-size: 85%; }
+        pre code { background-color: transparent; padding: 0; }
+        ul { padding-left: 2em; }
+        li { margin-bottom: 0.25em; }
+    </style>
+</head>
+<body>
+    <h1>Project Analysis: PROGLAN IT Services Website</h1>
+    <p>Based on the analysis of the project's codebase, here is a detailed breakdown of its current architecture, stack, and structure.</p>
+
+    <h2>1. Current Tech Stack</h2>
+    <h3>Frontend</h3>
+    <ul>
+        <li><strong>Framework:</strong> Vue.js 3 (Composition API)</li>
+        <li><strong>Routing:</strong> Vue Router 4 for client-side routing</li>
+        <li><strong>Styling:</strong> Tailwind CSS (v3.2) with PostCSS and Autoprefixer, utilizing <code>@tailwindcss/forms</code></li>
+        <li><strong>Icons:</strong> <code>lucide-vue-next</code> for SVG icons</li>
+        <li><strong>Animations:</strong> <code>@vueuse/motion</code></li>
+        <li><strong>HTTP Client:</strong> Axios</li>
+        <li><strong>Bundler:</strong> Vite</li>
+    </ul>
+
+    <h3>Backend</h3>
+    <ul>
+        <li><strong>Framework:</strong> Laravel (v13.x)</li>
+        <li><strong>Language:</strong> PHP (^8.3)</li>
+        <li><strong>Server:</strong> Artisan development server (<code>php artisan serve</code>)</li>
+    </ul>
+
+    <h2>2. Folder Structure</h2>
+    <p>The project follows a standard Laravel + Vue Single Page Application (SPA) structure:</p>
+    <pre>
+/
+├── app/
+│   └── Http/
+│       └── Controllers/
+│           ├── Controller.php
+│           └── PageController.php
+├── public/
+│   └── images/               # Contains the uploaded logo
+├── resources/
+│   ├── css/
+│   │   └── app.css           # Global Tailwind styles
+│   ├── js/
+│   │   ├── Components/
+│   │   │   ├── layout/       # Shared layout components (Navbar, Footer)
+│   │   │   └── ui/           # Reusable UI elements
+│   │   ├── Pages/            # Route-level Vue components
+│   │   ├── app.js            # Main Vue application entry point
+│   │   └── router.js         # Vue Router configuration
+│   └── views/
+│       └── app.blade.php     # Main Blade template (entry point for the SPA)
+├── routes/
+│   └── web.php               # Laravel web routes
+├── composer.json             # PHP dependencies
+├── package.json              # Node.js dependencies
+├── tailwind.config.js        # Tailwind configuration
+└── vite.config.js            # Vite configuration
+    </pre>
+
+    <h2>3. Dependencies</h2>
+    <h3>Node.js Dependencies</h3>
+    <ul>
+        <li><strong>Dependencies:</strong> <code>vue-router</code></li>
+        <li><strong>DevDependencies:</strong> <code>vue</code>, <code>vite</code>, <code>tailwindcss</code>, <code>@inertiajs/vue3</code>, <code>@vueuse/motion</code>, <code>axios</code>, <code>lucide-vue-next</code></li>
+    </ul>
+
+    <h3>PHP Dependencies</h3>
+    <ul>
+        <li><code>php</code> (^8.3)</li>
+        <li><code>laravel/framework</code> (^13.8)</li>
+        <li><code>laravel/tinker</code> (^3.0)</li>
+    </ul>
+
+    <h2>4. Routing Architecture</h2>
+    <p>The application uses a <strong>catch-all SPA routing architecture</strong>:</p>
+    <ul>
+        <li><strong>Backend Routing:</strong> Laravel serves a single entry point for all URLs. Any request (<code>/{any}</code>) is handled by a closure that returns the <code>app.blade.php</code> view.</li>
+        <li><strong>Frontend Routing:</strong> Vue Router takes over once the frontend loads. It uses HTML5 History mode to manage navigation without page reloads.</li>
+    </ul>
+
+    <h2>5. Components and Pages</h2>
+    <ul>
+        <li><strong>Pages:</strong> <code>Home.vue</code>, <code>About.vue</code>, <code>Services.vue</code>, <code>HireUs.vue</code>, <code>Blogs.vue</code>, <code>Career.vue</code>, <code>Contact.vue</code></li>
+        <li><strong>Layout Components:</strong> <code>Navbar.vue</code>, <code>Footer.vue</code></li>
+        <li><strong>UI Components:</strong> <code>Button.vue</code>, <code>CustomCursor.vue</code>, <code>GlassCard.vue</code>, <code>LoadingScreen.vue</code>, <code>ScrollReveal.vue</code></li>
+    </ul>
+
+    <h2>6. APIs and Data Sources</h2>
+    <ul>
+        <li><strong>Current State:</strong> The application is currently functioning purely as a frontend SPA. Data is largely hardcoded or mocked directly within the Vue components.</li>
+        <li><strong>Backend APIs:</strong> There are currently no defined API routes.</li>
+        <li><strong>Controllers:</strong> A <code>PageController.php</code> exists but is not currently utilized by the web routes, as the routing defaults to the catch-all closure for the Vue SPA.</li>
+    </ul>
+</body>
+</html>
